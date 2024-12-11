@@ -4,13 +4,8 @@ router = express.Router();
 
 const adminRoutes = require("../controllers/adminCtrl");
 
-
-
 router.post("/safemind_login", adminRoutes.safemind_login);
 router.post("/safemind_create_account", adminRoutes.safemind_create_account);
-//groupchat of safemind
-
-//////////////group chat
 router.post('/createGroup', adminRoutes.createGroup);
 router.post('/Group_get', adminRoutes.Group_get);
 router.delete('/deleteGroup/:id', adminRoutes.deleteGroup);

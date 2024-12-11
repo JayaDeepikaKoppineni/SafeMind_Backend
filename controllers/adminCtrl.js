@@ -124,9 +124,8 @@ exports.createGroup = (req, res) => {
   let class_date = req.body.class_date;
   let class_time = req.body.class_time;
   let userid = req.body.userid;
-  let university =req.body.university;
-  let group_number=req.body.group_number
-
+  let university = req.body.university;
+  let group_number = req.body.group_number;
 
   adminModel.createGroup(
     group_name,
@@ -207,11 +206,9 @@ exports.Group_get = (req, res) => {
   });
 };
 
-
 exports.deleteGroup = (req, res) => {
   let id = req.params.id;
-  let userid = req.body.userid
-
+  let userid = req.body.userid;
 
   adminModel.deleteGroup(id, userid, async (err, Data18, flag) => {
     if (err) {
@@ -225,10 +222,7 @@ exports.deleteGroup = (req, res) => {
   });
 };
 
-
 exports.Group_get_all = (req, res) => {
-
-
   adminModel.Group_get_all(async (err, Data18, flag) => {
     if (err) {
       logger.error("Error While Getting notification_display ", err);
@@ -241,7 +235,6 @@ exports.Group_get_all = (req, res) => {
   });
 };
 
-
 exports.reg_token = (req, res) => {
   let token = req.body.token;
   let userid = req.body.userid;
@@ -251,17 +244,13 @@ exports.reg_token = (req, res) => {
       res.send({ result: stdCodes.message.serverError.code, message: "" });
       return;
     } else {
-
-
       res.send({ result: "success", data: Data18 });
       return;
     }
   });
 };
 
-
 exports.reg_peronality_chart = (req, res) => {
-
   let university = req.body.university;
 
   adminModel.reg_peronality_chart(university, (err, Data18, flag) => {
@@ -270,38 +259,37 @@ exports.reg_peronality_chart = (req, res) => {
       res.send({ result: stdCodes.message.serverError.code, message: "" });
       return;
     } else {
-
-
       res.send({ result: "success", data: Data18 });
       return;
     }
   });
 };
-
 
 exports.safemind_post = (req, res) => {
-
   let post = req.body.post;
-  let userid=req.body.userid;
+  let userid = req.body.userid;
   let currentstamp = req.body.currentstamp;
-  let likes=req.body.likes;
+  let likes = req.body.likes;
 
-  adminModel.safemind_post(post,userid,currentstamp,likes, (err, Data18, flag) => {
-    if (err) {
-      logger.error("Error While Getting notification_display ", err);
-      res.send({ result: stdCodes.message.serverError.code, message: "" });
-      return;
-    } else {
-      res.send({ result: "success", data: Data18 });
-      return;
+  adminModel.safemind_post(
+    post,
+    userid,
+    currentstamp,
+    likes,
+    (err, Data18, flag) => {
+      if (err) {
+        logger.error("Error While Getting notification_display ", err);
+        res.send({ result: stdCodes.message.serverError.code, message: "" });
+        return;
+      } else {
+        res.send({ result: "success", data: Data18 });
+        return;
+      }
     }
-  });
+  );
 };
 
-
 exports.safemind_post_all = (req, res) => {
-
-
   adminModel.safemind_post_all(async (err, Data18, flag) => {
     if (err) {
       logger.error("Error While Getting notification_display ", err);
